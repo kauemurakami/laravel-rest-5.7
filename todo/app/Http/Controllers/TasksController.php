@@ -24,4 +24,16 @@ class TasksController extends Controller
     public function showTask(Task $task){
         return $task;
     }
+
+    public function remove(Task $task){
+        $task->delete();
+        return "apagado";
+    }
+
+    public function update(Request $request, Task $task){
+
+        $task->nome = $request->input('nome');
+        $task->save();
+        return $task;
+    }
 }
